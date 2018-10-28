@@ -11,7 +11,7 @@ function User (name='xMan', email='N/A', photoURL) {
     ]
 
 	var getAvatar = function () {
-		return  avatars[Math.round(Math.random()*avatars.length-1)]
+		return  avatars[Math.round(Math.random()*(avatars.length-1))]
 	}
 	this._name = name
 	this._email = email
@@ -40,6 +40,7 @@ User.prototype.write = function (message='I can see you dude') {
 	msgBox.appendChild(icon_)
 	msgBox.appendChild(msg)
 	User.prototype.messageBox.appendChild(msgBox)
+	User.prototype.messageBox.scrollTop = User.prototype.messageBox.scrollHeight;
 }
 
 var admin = new User()
