@@ -8,7 +8,7 @@ body {
 
 .messageBoxStyle {
     height:400px;
-    width:70%;
+    width:300px;
     border: 2px solid;
     overflow:auto;
     background-color: lavender;
@@ -23,6 +23,7 @@ body {
 .icon {
     height: 30px;
     width: 30px;
+    margin-right: 5px;
 }
 
 p {
@@ -37,8 +38,9 @@ p {
 }
 
 .adminInputBox {
-    width:30%;
-    height: 50px;
+    width: 297px;
+    height: 40px;
+    resize: none;
     border: 2px solid;
-
+    background-color: lavender;
 }

@@ -43,9 +43,18 @@ User.prototype.write = function (message='I can see you dude') {
 	User.prototype.messageBox.scrollTop = User.prototype.messageBox.scrollHeight
 }
 
+
 var adminInputBox = document.body.appendChild(document.createElement('textarea'))
 adminInputBox.classList.add('adminInputBox')
 adminInputBox.rows =4
-//event.defaultPrevented()
 
 var admin = new User()
+
+adminInputBox.onkeypress = function (event) {
+	if(event.key === 'Enter' && !event.shiftKey) {
+		event.preventDefault()
+		admin.write(event.target.value)
+//		console.log(event.target.value)
+
+	}
+}
