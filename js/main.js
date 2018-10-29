@@ -40,7 +40,12 @@ User.prototype.write = function (message='I can see you dude') {
 	msgBox.appendChild(icon_)
 	msgBox.appendChild(msg)
 	User.prototype.messageBox.appendChild(msgBox)
-	User.prototype.messageBox.scrollTop = User.prototype.messageBox.scrollHeight;
+	User.prototype.messageBox.scrollTop = User.prototype.messageBox.scrollHeight
 }
+
+var adminInputBox = document.body.appendChild(document.createElement('textarea'))
+adminInputBox.classList.add('adminInputBox')
+adminInputBox.rows =4
+//event.defaultPrevented()
 
 var admin = new User()
