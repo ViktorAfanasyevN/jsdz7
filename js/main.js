@@ -17,10 +17,11 @@ function User (name='xMan', email='N/A', photoURL) {
 	this._email = email
 	this._photoURL = (photoURL) ? photoURL : getAvatar()
 
-    var admin = {
-	    _photoURL: "https://i.pinimg.com/originals/3d/47/4f/3d474f82ff71595e8081f9a120892ae8.gif",
-	    name: "admin"
-    }
+}
+
+User.admin = {
+	_photoURL: "https://i.pinimg.com/originals/3d/47/4f/3d474f82ff71595e8081f9a120892ae8.gif",
+	name: "admin"
 }
 
 User.prototype.messageBox = document.body.appendChild(document.createElement('div'))
@@ -28,11 +29,11 @@ User.prototype.messageBox.classList.add('messageBoxStyle')
 User.prototype.write = function (message='I can see you dude') {
 	let icon_ = document.createElement('img')
 	icon_.classList.add('icon')
-	icon_.src = this._photoURL
+	icon_.src = (arguments[1]) ? arguments[1]._photoURL : this._photoURL
 	let msg = document.createElement('p')
 	let __name = msg.appendChild(document.createElement('span'))
 	__name.classList.add("nameStyle")
-	__name.appendChild(document.createTextNode(this._name))
+	__name.appendChild(document.createTextNode( (arguments[1]) ? arguments[1].name : this._name))
 	msg.appendChild(document.createElement('br'))
 	msg.appendChild(document.createTextNode(message))
 	let msgBox = document.createElement('div')
@@ -48,13 +49,10 @@ var adminInputBox = document.body.appendChild(document.createElement('textarea')
 adminInputBox.classList.add('adminInputBox')
 adminInputBox.rows =4
 
-var admin = new User()
-
 adminInputBox.onkeypress = function (event) {
 	if(event.key === 'Enter' && !event.shiftKey) {
 		event.preventDefault()
-		admin.write(event.target.value)
-//		console.log(event.target.value)
-
+		User.prototype.write(event.target.value, User.admin)
+		event.target.value=''
 	}
 }
